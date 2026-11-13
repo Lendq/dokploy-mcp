@@ -33,6 +33,10 @@ Schlanker Dokploy-MCP-Server in Rust mit passwortgeschütztem OAuth und 100 Werk
 
 The MCP endpoint is served at both `/` and `/mcp`.
 
+### Automatic deploys
+
+Use Dokploy's **Git** source with this repository's HTTPS URL and branch `main`, and turn on **Auto Deploy**. Then add a GitHub webhook (Settings → Webhooks, content type `application/json`, *push* events) pointing to the application's deploy URL from Dokploy (`https://<your-dokploy>/api/deploy/<token>`). Every push to `main` then rebuilds and redeploys the server.
+
 ## Connect
 
 - **Claude Code:** `claude mcp add --transport http dokploy https://dokploy-mcp.example.com/mcp`, then `/mcp` → dokploy → Authenticate.
