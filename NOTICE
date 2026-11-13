@@ -1,0 +1,19 @@
+Dokploy MCP
+Copyright 2026 Yehor Hliebov
+
+tools.json contains the 100 application, compose, deployment, domain,
+environment and project API definitions derived from @dokploy/mcp 0.30.7
+(https://github.com/Dokploy/mcp), Copyright 2026 Dokploy Technologies, Inc.
+The definitions were converted from Zod to JSON Schema; unsupported provider
+regex constraints were removed. Runtime code was independently implemented.
+The original attribution is preserved in LICENSE.dokploy.
+
+Modifications (2026-11-13):
+- OAuth client registration also accepts claude.ai callbacks and HTTP
+  loopback callbacks (localhost / 127.0.0.1, RFC 8252) so Claude Code and
+  claude.ai can sign in; the approval page's form-action CSP allows them.
+- Refresh tokens use a sliding 90-day lifetime instead of a fixed 14 days.
+- Six tool definitions in tools.json were updated to match the Dokploy
+  v0.31.2 API (application-update, application-saveGithubProvider,
+  application-readAppMonitoring, compose-update, project-update,
+  environment-update).

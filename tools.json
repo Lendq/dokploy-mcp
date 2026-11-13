@@ -1,0 +1,4860 @@
+[
+  {
+    "name": "application-create",
+    "description": "POST /application.create",
+    "method": "POST",
+    "path": "/application.create",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appName": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._-]+$",
+          "minLength": 1,
+          "maxLength": 63
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "environmentId": {
+          "type": "string"
+        },
+        "serverId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "github",
+            "docker",
+            "git",
+            "gitlab",
+            "bitbucket",
+            "gitea",
+            "drop"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "environmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Create",
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-deployNginxQuickstart",
+    "description": "POST /application.deployNginxQuickstart",
+    "method": "POST",
+    "path": "/application.deployNginxQuickstart",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "environmentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "serverId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "environmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application DeployNginxQuickstart",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-one",
+    "description": "GET /application.one",
+    "method": "GET",
+    "path": "/application.one",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application One",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-reload",
+    "description": "POST /application.reload",
+    "method": "POST",
+    "path": "/application.reload",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._-]+$",
+          "minLength": 1,
+          "maxLength": 63
+        },
+        "applicationId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName",
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Reload",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-delete",
+    "description": "POST /application.delete",
+    "method": "POST",
+    "path": "/application.delete",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Delete",
+      "destructiveHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-stop",
+    "description": "POST /application.stop",
+    "method": "POST",
+    "path": "/application.stop",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Stop",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-start",
+    "description": "POST /application.start",
+    "method": "POST",
+    "path": "/application.start",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Start",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-redeploy",
+    "description": "POST /application.redeploy",
+    "method": "POST",
+    "path": "/application.redeploy",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Redeploy",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveEnvironment",
+    "description": "POST /application.saveEnvironment",
+    "method": "POST",
+    "path": "/application.saveEnvironment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "env": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildArgs": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildSecrets": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createEnvFile": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "applicationId",
+        "env",
+        "buildArgs",
+        "buildSecrets",
+        "createEnvFile"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveEnvironment",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveBuildType",
+    "description": "POST /application.saveBuildType",
+    "method": "POST",
+    "path": "/application.saveBuildType",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "buildType": {
+          "type": "string",
+          "enum": [
+            "dockerfile",
+            "heroku_buildpacks",
+            "paketo_buildpacks",
+            "nixpacks",
+            "static",
+            "railpack"
+          ]
+        },
+        "dockerfile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dockerContextPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dockerBuildStage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "herokuVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "railpackVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "publishDirectory": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isStaticSpa": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "buildType",
+        "dockerfile",
+        "dockerContextPath",
+        "dockerBuildStage",
+        "herokuVersion",
+        "railpackVersion"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveBuildType",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveGithubProvider",
+    "description": "POST /application.saveGithubProvider",
+    "method": "POST",
+    "path": "/application.saveGithubProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "repository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "githubId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9._\\-/#]+$"
+        },
+        "triggerType": {
+          "default": "push",
+          "type": "string",
+          "enum": [
+            "push",
+            "tag"
+          ]
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "repository",
+        "owner",
+        "buildPath",
+        "githubId",
+        "branch",
+        "triggerType"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveGithubProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveGitlabProvider",
+    "description": "POST /application.saveGitlabProvider",
+    "method": "POST",
+    "path": "/application.saveGitlabProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "gitlabBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabProjectId": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gitlabPathNamespace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabBranch": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._\\-/#]+$",
+          "minLength": 1
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "gitlabBuildPath",
+        "gitlabOwner",
+        "gitlabRepository",
+        "gitlabId",
+        "gitlabProjectId",
+        "gitlabPathNamespace",
+        "gitlabBranch"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveGitlabProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveBitbucketProvider",
+    "description": "POST /application.saveBitbucketProvider",
+    "method": "POST",
+    "path": "/application.saveBitbucketProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "bitbucketBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketRepositorySlug": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "applicationId": {
+          "type": "string"
+        },
+        "bitbucketBranch": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._\\-/#]+$",
+          "minLength": 1
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "bitbucketBuildPath",
+        "bitbucketOwner",
+        "bitbucketRepository",
+        "bitbucketRepositorySlug",
+        "bitbucketId",
+        "applicationId",
+        "bitbucketBranch"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveBitbucketProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveGiteaProvider",
+    "description": "POST /application.saveGiteaProvider",
+    "method": "POST",
+    "path": "/application.saveGiteaProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "giteaBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaBranch": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._\\-/#]+$",
+          "minLength": 1
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "giteaBuildPath",
+        "giteaOwner",
+        "giteaRepository",
+        "giteaId",
+        "giteaBranch"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveGiteaProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveDockerProvider",
+    "description": "POST /application.saveDockerProvider",
+    "method": "POST",
+    "path": "/application.saveDockerProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dockerImage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "applicationId": {
+          "type": "string"
+        },
+        "username": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "password": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registryUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "dockerImage",
+        "applicationId",
+        "username",
+        "password",
+        "registryUrl"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveDockerProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-saveGitProvider",
+    "description": "POST /application.saveGitProvider",
+    "method": "POST",
+    "path": "/application.saveGitProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "customGitBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customGitUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "customGitBranch": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._\\-/#]+$",
+          "minLength": 1
+        },
+        "customGitSSHKeyId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "applicationId",
+        "customGitBuildPath",
+        "customGitUrl",
+        "watchPaths",
+        "customGitBranch"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application SaveGitProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-disconnectGitProvider",
+    "description": "POST /application.disconnectGitProvider",
+    "method": "POST",
+    "path": "/application.disconnectGitProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application DisconnectGitProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-markRunning",
+    "description": "POST /application.markRunning",
+    "method": "POST",
+    "path": "/application.markRunning",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application MarkRunning",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-update",
+    "description": "POST /application.update",
+    "method": "POST",
+    "path": "/application.update",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 63,
+          "pattern": "^[a-zA-Z0-9._-]+$"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "env": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewEnv": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "previewBuildArgs": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewBuildSecrets": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewLabels": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "previewWildcard": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewPort": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previewHttps": {
+          "type": "boolean"
+        },
+        "previewPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewCertificateType": {
+          "type": "string",
+          "enum": [
+            "letsencrypt",
+            "none",
+            "custom"
+          ]
+        },
+        "previewCustomCertResolver": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewLimit": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "isPreviewDeploymentsActive": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "previewRequireCollaboratorPermissions": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "rollbackActive": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "buildArgs": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildSecrets": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "memoryReservation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "memoryLimit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cpuReservation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cpuLimit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "subtitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "command": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "args": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "icon": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 2097152
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "refreshToken": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "github",
+            "docker",
+            "git",
+            "gitlab",
+            "bitbucket",
+            "gitea",
+            "drop"
+          ]
+        },
+        "cleanCache": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "repository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "branch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "triggerType": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "push",
+                "tag"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "autoDeploy": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "gitlabProjectId": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gitlabRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabBranch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabPathNamespace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaBranch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketRepositorySlug": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketBranch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "username": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "password": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dockerImage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registryUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customGitUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customGitBranch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customGitBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customGitSSHKeyId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "dockerfile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dockerContextPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dockerBuildStage": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9][a-zA-Z0-9._-]*)?$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dropBuildPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "healthCheckSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Test": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "Interval": {
+                      "type": "number"
+                    },
+                    "Timeout": {
+                      "type": "number"
+                    },
+                    "StartPeriod": {
+                      "type": "number"
+                    },
+                    "Retries": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "restartPolicySwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Condition": {
+                      "type": "string"
+                    },
+                    "Delay": {
+                      "type": "number"
+                    },
+                    "MaxAttempts": {
+                      "type": "number"
+                    },
+                    "Window": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "placementSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Constraints": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "Preferences": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "Spread": {
+                            "type": "object",
+                            "properties": {
+                              "SpreadDescriptor": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "SpreadDescriptor"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "Spread"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "MaxReplicas": {
+                      "type": "number"
+                    },
+                    "Platforms": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "Architecture": {
+                            "type": "string"
+                          },
+                          "OS": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "Architecture",
+                          "OS"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "updateConfigSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Parallelism": {
+                      "type": "number"
+                    },
+                    "Delay": {
+                      "type": "number"
+                    },
+                    "FailureAction": {
+                      "type": "string"
+                    },
+                    "Monitor": {
+                      "type": "number"
+                    },
+                    "MaxFailureRatio": {
+                      "type": "number"
+                    },
+                    "Order": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Parallelism",
+                    "Order"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rollbackConfigSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Parallelism": {
+                      "type": "number"
+                    },
+                    "Delay": {
+                      "type": "number"
+                    },
+                    "FailureAction": {
+                      "type": "string"
+                    },
+                    "Monitor": {
+                      "type": "number"
+                    },
+                    "MaxFailureRatio": {
+                      "type": "number"
+                    },
+                    "Order": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Parallelism",
+                    "Order"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modeSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Replicated": {
+                      "type": "object",
+                      "properties": {
+                        "Replicas": {
+                          "type": "number"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "Global": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "ReplicatedJob": {
+                      "type": "object",
+                      "properties": {
+                        "MaxConcurrent": {
+                          "type": "number"
+                        },
+                        "TotalCompletions": {
+                          "type": "number"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "GlobalJob": {
+                      "type": "object",
+                      "properties": {}
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "labelsSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "networkSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Target": {
+                        "type": "string"
+                      },
+                      "Aliases": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "DriverOpts": {
+                        "type": "object",
+                        "propertyNames": {
+                          "type": "string"
+                        },
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stopGracePeriodSwarm": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "endpointSpecSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Mode": {
+                      "type": "string"
+                    },
+                    "Ports": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "Protocol": {
+                            "type": "string"
+                          },
+                          "TargetPort": {
+                            "type": "number"
+                          },
+                          "PublishedPort": {
+                            "type": "number"
+                          },
+                          "PublishMode": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ulimitsSwarm": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "Soft": {
+                        "type": "integer",
+                        "minimum": -1,
+                        "maximum": 9007199254740991
+                      },
+                      "Hard": {
+                        "type": "integer",
+                        "minimum": -1,
+                        "maximum": 9007199254740991
+                      }
+                    },
+                    "required": [
+                      "Name",
+                      "Soft",
+                      "Hard"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "replicas": {
+          "type": "number"
+        },
+        "applicationStatus": {
+          "type": "string",
+          "enum": [
+            "idle",
+            "running",
+            "done",
+            "error"
+          ]
+        },
+        "buildType": {
+          "type": "string",
+          "enum": [
+            "dockerfile",
+            "heroku_buildpacks",
+            "paketo_buildpacks",
+            "nixpacks",
+            "static",
+            "railpack"
+          ]
+        },
+        "railpackVersion": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9][a-zA-Z0-9._-]*)?$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "herokuVersion": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^([a-zA-Z0-9][a-zA-Z0-9._-]*)?$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "publishDirectory": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isStaticSpa": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "createEnvFile": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "registryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rollbackRegistryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "githubId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildServerId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "buildRegistryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "networkIds": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "detachDokployNetwork": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Update",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-refreshToken",
+    "description": "POST /application.refreshToken",
+    "method": "POST",
+    "path": "/application.refreshToken",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application RefreshToken",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-deploy",
+    "description": "POST /application.deploy",
+    "method": "POST",
+    "path": "/application.deploy",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Deploy",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-cleanQueues",
+    "description": "POST /application.cleanQueues",
+    "method": "POST",
+    "path": "/application.cleanQueues",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application CleanQueues",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-clearDeployments",
+    "description": "POST /application.clearDeployments",
+    "method": "POST",
+    "path": "/application.clearDeployments",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application ClearDeployments",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-killBuild",
+    "description": "POST /application.killBuild",
+    "method": "POST",
+    "path": "/application.killBuild",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application KillBuild",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-readTraefikConfig",
+    "description": "GET /application.readTraefikConfig",
+    "method": "GET",
+    "path": "/application.readTraefikConfig",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application ReadTraefikConfig",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-dropDeployment",
+    "description": "POST /application.dropDeployment",
+    "method": "POST",
+    "path": "/application.dropDeployment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application DropDeployment",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-updateTraefikConfig",
+    "description": "POST /application.updateTraefikConfig",
+    "method": "POST",
+    "path": "/application.updateTraefikConfig",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "traefikConfig": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "applicationId",
+        "traefikConfig"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application UpdateTraefikConfig",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-readAppMonitoring",
+    "description": "GET /application.readAppMonitoring",
+    "method": "GET",
+    "path": "/application.readAppMonitoring",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "serviceId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application ReadAppMonitoring",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-move",
+    "description": "POST /application.move",
+    "method": "POST",
+    "path": "/application.move",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "targetEnvironmentId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "applicationId",
+        "targetEnvironmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Move",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-cancelDeployment",
+    "description": "POST /application.cancelDeployment",
+    "method": "POST",
+    "path": "/application.cancelDeployment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application CancelDeployment",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-search",
+    "description": "GET /application.search",
+    "method": "GET",
+    "path": "/application.search",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "dockerImage": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "environmentId": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "offset": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application Search",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "application-readLogs",
+    "description": "GET /application.readLogs",
+    "method": "GET",
+    "path": "/application.readLogs",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tail": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "default": 100
+        },
+        "since": {
+          "type": "string",
+          "pattern": "^(all|\\d+[smhd])$",
+          "default": "all"
+        },
+        "search": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ._-]{0,500}$"
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Application ReadLogs",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-create",
+    "description": "POST /compose.create",
+    "method": "POST",
+    "path": "/compose.create",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "environmentId": {
+          "type": "string"
+        },
+        "composeType": {
+          "type": "string",
+          "enum": [
+            "docker-compose",
+            "stack"
+          ]
+        },
+        "appName": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9._-]+$",
+          "minLength": 1,
+          "maxLength": 63
+        },
+        "serverId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "composeFile": {
+          "type": "string"
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "git",
+            "github",
+            "gitlab",
+            "bitbucket",
+            "gitea",
+            "raw"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "environmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Create",
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-one",
+    "description": "GET /compose.one",
+    "method": "GET",
+    "path": "/compose.one",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose One",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-update",
+    "description": "POST /compose.update",
+    "method": "POST",
+    "path": "/compose.update",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 63,
+          "pattern": "^[a-zA-Z0-9._-]+$"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "env": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "composeFile": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": [
+            "git",
+            "github",
+            "gitlab",
+            "bitbucket",
+            "gitea",
+            "raw"
+          ]
+        },
+        "composeType": {
+          "type": "string",
+          "enum": [
+            "docker-compose",
+            "stack"
+          ]
+        },
+        "repository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "branch": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-zA-Z0-9._\\-/#]+$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "autoDeploy": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "gitlabProjectId": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gitlabRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabBranch": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-zA-Z0-9._\\-/#]+$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gitlabPathNamespace": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketRepositorySlug": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketBranch": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-zA-Z0-9._\\-/#]+$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "giteaRepository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaBranch": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-zA-Z0-9._\\-/#]+$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "customGitUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customGitBranch": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-zA-Z0-9._\\-/#]+$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "customGitSSHKeyId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "command": {
+          "type": "string"
+        },
+        "createEnvFile": {
+          "type": "boolean"
+        },
+        "enableSubmodules": {
+          "type": "boolean"
+        },
+        "composePath": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9._@+][a-zA-Z0-9._@+/-]*$"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "randomize": {
+          "type": "boolean"
+        },
+        "isolatedDeployment": {
+          "type": "boolean"
+        },
+        "isolatedDeploymentsVolume": {
+          "type": "boolean"
+        },
+        "pullImages": {
+          "type": "boolean"
+        },
+        "triggerType": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "push",
+                "tag"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "composeStatus": {
+          "type": "string",
+          "enum": [
+            "idle",
+            "running",
+            "done",
+            "error"
+          ]
+        },
+        "icon": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 2097152
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "watchPaths": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "githubId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitlabId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bitbucketId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "giteaId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "serviceNetworks": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "serviceName": {
+                    "type": "string"
+                  },
+                  "networkIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "detachDokployNetwork": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "serviceName",
+                  "networkIds",
+                  "detachDokployNetwork"
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Update",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-saveEnvironment",
+    "description": "POST /compose.saveEnvironment",
+    "method": "POST",
+    "path": "/compose.saveEnvironment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string"
+        },
+        "env": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createEnvFile": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "composeId",
+        "env"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose SaveEnvironment",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-delete",
+    "description": "POST /compose.delete",
+    "method": "POST",
+    "path": "/compose.delete",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deleteVolumes": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "composeId",
+        "deleteVolumes"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Delete",
+      "destructiveHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-cleanQueues",
+    "description": "POST /compose.cleanQueues",
+    "method": "POST",
+    "path": "/compose.cleanQueues",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose CleanQueues",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-clearDeployments",
+    "description": "POST /compose.clearDeployments",
+    "method": "POST",
+    "path": "/compose.clearDeployments",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose ClearDeployments",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-killBuild",
+    "description": "POST /compose.killBuild",
+    "method": "POST",
+    "path": "/compose.killBuild",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose KillBuild",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-loadServices",
+    "description": "GET /compose.loadServices",
+    "method": "GET",
+    "path": "/compose.loadServices",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "fetch",
+            "cache"
+          ],
+          "default": "cache"
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose LoadServices",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-loadMountsByService",
+    "description": "GET /compose.loadMountsByService",
+    "method": "GET",
+    "path": "/compose.loadMountsByService",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "serviceName": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId",
+        "serviceName"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose LoadMountsByService",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-fetchSourceType",
+    "description": "POST /compose.fetchSourceType",
+    "method": "POST",
+    "path": "/compose.fetchSourceType",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose FetchSourceType",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-randomizeCompose",
+    "description": "POST /compose.randomizeCompose",
+    "method": "POST",
+    "path": "/compose.randomizeCompose",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suffix": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose RandomizeCompose",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-isolatedDeployment",
+    "description": "POST /compose.isolatedDeployment",
+    "method": "POST",
+    "path": "/compose.isolatedDeployment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suffix": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose IsolatedDeployment",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-getConvertedCompose",
+    "description": "GET /compose.getConvertedCompose",
+    "method": "GET",
+    "path": "/compose.getConvertedCompose",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose GetConvertedCompose",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-deploy",
+    "description": "POST /compose.deploy",
+    "method": "POST",
+    "path": "/compose.deploy",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "freshVolumes": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Deploy",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-redeploy",
+    "description": "POST /compose.redeploy",
+    "method": "POST",
+    "path": "/compose.redeploy",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "freshVolumes": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Redeploy",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-stop",
+    "description": "POST /compose.stop",
+    "method": "POST",
+    "path": "/compose.stop",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Stop",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-start",
+    "description": "POST /compose.start",
+    "method": "POST",
+    "path": "/compose.start",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Start",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-getDefaultCommand",
+    "description": "GET /compose.getDefaultCommand",
+    "method": "GET",
+    "path": "/compose.getDefaultCommand",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose GetDefaultCommand",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-refreshToken",
+    "description": "POST /compose.refreshToken",
+    "method": "POST",
+    "path": "/compose.refreshToken",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose RefreshToken",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-deployTemplate",
+    "description": "POST /compose.deployTemplate",
+    "method": "POST",
+    "path": "/compose.deployTemplate",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "environmentId": {
+          "type": "string"
+        },
+        "serverId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "baseUrl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "environmentId",
+        "id"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose DeployTemplate",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-templates",
+    "description": "GET /compose.templates",
+    "method": "GET",
+    "path": "/compose.templates",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "baseUrl": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Templates",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-getTags",
+    "description": "GET /compose.getTags",
+    "method": "GET",
+    "path": "/compose.getTags",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "baseUrl": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose GetTags",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-disconnectGitProvider",
+    "description": "POST /compose.disconnectGitProvider",
+    "method": "POST",
+    "path": "/compose.disconnectGitProvider",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose DisconnectGitProvider",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-move",
+    "description": "POST /compose.move",
+    "method": "POST",
+    "path": "/compose.move",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string"
+        },
+        "targetEnvironmentId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "composeId",
+        "targetEnvironmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Move",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-processTemplate",
+    "description": "POST /compose.processTemplate",
+    "method": "POST",
+    "path": "/compose.processTemplate",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "base64": {
+          "type": "string"
+        },
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "base64",
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose ProcessTemplate",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-previewTemplate",
+    "description": "POST /compose.previewTemplate",
+    "method": "POST",
+    "path": "/compose.previewTemplate",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "base64": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "serverId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "base64",
+        "appName"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose PreviewTemplate",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-import",
+    "description": "POST /compose.import",
+    "method": "POST",
+    "path": "/compose.import",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "base64": {
+          "type": "string"
+        },
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "base64",
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Import",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-cancelDeployment",
+    "description": "POST /compose.cancelDeployment",
+    "method": "POST",
+    "path": "/compose.cancelDeployment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose CancelDeployment",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-search",
+    "description": "GET /compose.search",
+    "method": "GET",
+    "path": "/compose.search",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "environmentId": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "offset": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose Search",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "compose-readLogs",
+    "description": "GET /compose.readLogs",
+    "method": "GET",
+    "path": "/compose.readLogs",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "containerId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9.\\-_]+$",
+          "minLength": 1
+        },
+        "tail": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "default": 100
+        },
+        "since": {
+          "type": "string",
+          "pattern": "^(all|\\d+[smhd])$",
+          "default": "all"
+        },
+        "search": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ._-]{0,500}$"
+        }
+      },
+      "required": [
+        "composeId",
+        "containerId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Compose ReadLogs",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-all",
+    "description": "GET /deployment.all",
+    "method": "GET",
+    "path": "/deployment.all",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment All",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-allByCompose",
+    "description": "GET /deployment.allByCompose",
+    "method": "GET",
+    "path": "/deployment.allByCompose",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment AllByCompose",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-allByServer",
+    "description": "GET /deployment.allByServer",
+    "method": "GET",
+    "path": "/deployment.allByServer",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "serverId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "serverId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment AllByServer",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-allCentralized",
+    "description": "GET /deployment.allCentralized",
+    "method": "GET",
+    "path": "/deployment.allCentralized",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment AllCentralized",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-queueList",
+    "description": "GET /deployment.queueList",
+    "method": "GET",
+    "path": "/deployment.queueList",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment QueueList",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-allByType",
+    "description": "GET /deployment.allByType",
+    "method": "GET",
+    "path": "/deployment.allByType",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "application",
+            "compose",
+            "server",
+            "schedule",
+            "previewDeployment",
+            "backup",
+            "volumeBackup"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment AllByType",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-killProcess",
+    "description": "POST /deployment.killProcess",
+    "method": "POST",
+    "path": "/deployment.killProcess",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "deploymentId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "deploymentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment KillProcess",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-removeDeployment",
+    "description": "POST /deployment.removeDeployment",
+    "method": "POST",
+    "path": "/deployment.removeDeployment",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "deploymentId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "deploymentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment RemoveDeployment",
+      "destructiveHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deployment-readLogs",
+    "description": "GET /deployment.readLogs",
+    "method": "GET",
+    "path": "/deployment.readLogs",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "deploymentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tail": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "default": 100
+        }
+      },
+      "required": [
+        "deploymentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Deployment ReadLogs",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-create",
+    "description": "POST /domain.create",
+    "method": "POST",
+    "path": "/domain.create",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "port": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "customEntrypoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "https": {
+          "type": "boolean"
+        },
+        "applicationId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "certificateType": {
+          "type": "string",
+          "enum": [
+            "letsencrypt",
+            "none",
+            "custom"
+          ]
+        },
+        "customCertResolver": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "composeId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "serviceName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domainType": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "compose",
+                "application",
+                "preview"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "previewDeploymentId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "internalPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stripPath": {
+          "type": "boolean"
+        },
+        "middlewares": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "forwardAuthEnabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "host"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain Create",
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-byApplicationId",
+    "description": "GET /domain.byApplicationId",
+    "method": "GET",
+    "path": "/domain.byApplicationId",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "applicationId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain ByApplicationId",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-byComposeId",
+    "description": "GET /domain.byComposeId",
+    "method": "GET",
+    "path": "/domain.byComposeId",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "composeId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "composeId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain ByComposeId",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-generateDomain",
+    "description": "POST /domain.generateDomain",
+    "method": "POST",
+    "path": "/domain.generateDomain",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "serverId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain GenerateDomain",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-canGenerateTraefikMeDomains",
+    "description": "GET /domain.canGenerateTraefikMeDomains",
+    "method": "GET",
+    "path": "/domain.canGenerateTraefikMeDomains",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "serverId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "serverId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain CanGenerateTraefikMeDomains",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-update",
+    "description": "POST /domain.update",
+    "method": "POST",
+    "path": "/domain.update",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "port": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "customEntrypoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "https": {
+          "type": "boolean"
+        },
+        "certificateType": {
+          "type": "string",
+          "enum": [
+            "letsencrypt",
+            "none",
+            "custom"
+          ]
+        },
+        "customCertResolver": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "serviceName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domainType": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "compose",
+                "application",
+                "preview"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "internalPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stripPath": {
+          "type": "boolean"
+        },
+        "middlewares": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "forwardAuthEnabled": {
+          "type": "boolean"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "domainId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "host",
+        "domainId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain Update",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-toggleEnable",
+    "description": "POST /domain.toggleEnable",
+    "method": "POST",
+    "path": "/domain.toggleEnable",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "domainId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "domainId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain ToggleEnable",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-one",
+    "description": "GET /domain.one",
+    "method": "GET",
+    "path": "/domain.one",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "domainId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "domainId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain One",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-delete",
+    "description": "POST /domain.delete",
+    "method": "POST",
+    "path": "/domain.delete",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "domainId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "domainId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain Delete",
+      "destructiveHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "domain-validateDomain",
+    "description": "POST /domain.validateDomain",
+    "method": "POST",
+    "path": "/domain.validateDomain",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "serverId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Domain ValidateDomain",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-create",
+    "description": "POST /project.create",
+    "method": "POST",
+    "path": "/project.create",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project Create",
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-one",
+    "description": "GET /project.one",
+    "method": "GET",
+    "path": "/project.one",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project One",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-all",
+    "description": "GET /project.all",
+    "method": "GET",
+    "path": "/project.all",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project All",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-allForPermissions",
+    "description": "GET /project.allForPermissions",
+    "method": "GET",
+    "path": "/project.allForPermissions",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project AllForPermissions",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-homeStats",
+    "description": "GET /project.homeStats",
+    "method": "GET",
+    "path": "/project.homeStats",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project HomeStats",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-onboardingStatus",
+    "description": "GET /project.onboardingStatus",
+    "method": "GET",
+    "path": "/project.onboardingStatus",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project OnboardingStatus",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-completeOnboarding",
+    "description": "POST /project.completeOnboarding",
+    "method": "POST",
+    "path": "/project.completeOnboarding",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project CompleteOnboarding",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-search",
+    "description": "GET /project.search",
+    "method": "GET",
+    "path": "/project.search",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "offset": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project Search",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-remove",
+    "description": "POST /project.remove",
+    "method": "POST",
+    "path": "/project.remove",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project Remove",
+      "destructiveHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-update",
+    "description": "POST /project.update",
+    "method": "POST",
+    "path": "/project.update",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project Update",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "project-duplicate",
+    "description": "POST /project.duplicate",
+    "method": "POST",
+    "path": "/project.duplicate",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sourceEnvironmentId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "includeServices": {
+          "type": "boolean",
+          "default": true
+        },
+        "selectedServices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "application",
+                  "compose",
+                  "libsql",
+                  "mariadb",
+                  "mongo",
+                  "mysql",
+                  "postgres",
+                  "redis"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "duplicateInSameProject": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": [
+        "sourceEnvironmentId",
+        "name"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Project Duplicate",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-create",
+    "description": "POST /environment.create",
+    "method": "POST",
+    "path": "/environment.create",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "projectId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment Create",
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-one",
+    "description": "GET /environment.one",
+    "method": "GET",
+    "path": "/environment.one",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "environmentId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "environmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment One",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-byProjectId",
+    "description": "GET /environment.byProjectId",
+    "method": "GET",
+    "path": "/environment.byProjectId",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment ByProjectId",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-remove",
+    "description": "POST /environment.remove",
+    "method": "POST",
+    "path": "/environment.remove",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "environmentId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "environmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment Remove",
+      "destructiveHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-update",
+    "description": "POST /environment.update",
+    "method": "POST",
+    "path": "/environment.update",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "environmentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "environmentId"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment Update",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-duplicate",
+    "description": "POST /environment.duplicate",
+    "method": "POST",
+    "path": "/environment.duplicate",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "environmentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "environmentId",
+        "name"
+      ],
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment Duplicate",
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "environment-search",
+    "description": "GET /environment.search",
+    "method": "GET",
+    "path": "/environment.search",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "offset": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "annotations": {
+      "title": "Environment Search",
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  }
+]
